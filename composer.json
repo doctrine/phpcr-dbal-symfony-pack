@@ -11,12 +11,10 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "ElectricMaxxx",
-      "email": "maximilian.berghoff@gmx.de"
+      "name": "Symfony CMF Community",
+      "homepage": "https://github.com/symfony-cmf/symfony-cmf/contributors"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
