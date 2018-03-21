@@ -1,7 +1,7 @@
 {
-  "name": "doctrine/phpcr-dbal",
+  "name": "doctrine/phpcr-dbal-symfony-pack",
   "description": "Meta repository to install dbal implementation of doctrine/phpcr-bundle.",
-  "type": "library, metapackage",
+  "type": "metapackage",
   "require": {
     "doctrine/phpcr-bundle": "^2.0",
     "jackalope/jackalope-doctrine-dbal": "^1.3",
