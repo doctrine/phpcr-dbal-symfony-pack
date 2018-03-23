@@ -1,6 +1,6 @@
 {
   "name": "doctrine/phpcr-dbal-symfony-pack",
-  "description": "Meta repository to install dbal implementation of doctrine/phpcr-bundle.",
+  "description": "Symfony package repository to install dbal implementation of doctrine/phpcr-bundle.",
   "type": "symfony-bundle",
   "require": {
     "doctrine/phpcr-bundle": "^2.0",
