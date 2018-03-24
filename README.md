@@ -1,4 +1,6 @@
-# Symfony Pack to install DoctrinePHPCRBundle with dbal implementation
+# Symfony Flex Pack for the PHPCR-ODM Bundle
 
-This is a kind of a meta repository, which combines all needed repositories to install and start working 
-with doctrine/phpcr-odm with dbal implementation. A Symfony recipe will install it in an easy way.
+This meta package combines all Symfony bundles and libraries needed for a working [PHPCR](http://phpcr.github.io/) and [PHPCR-ODM](http://docs.doctrine-project.org/projects/doctrine-phpcr-odm/en/latest/index.html) setup in [Symfony](http://symfony.com/).
+It uses [jackalope-doctrine-dbal](https://github.com/jackalope/jackalope-doctrine-dbal) as PHPCR implementation.
+
+This pack is used with the Symfony flex recipe: `composer require  doctrine/phpcr-dbal-symfony-pack`
