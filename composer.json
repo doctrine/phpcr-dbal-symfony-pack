@@ -3,7 +3,7 @@
   "description": "Symfony package repository to install dbal implementation of doctrine/phpcr-bundle.",
   "type": "symfony-bundle",
   "require": {
-    "doctrine/phpcr-bundle": "^2.0",
+    "doctrine/phpcr-bundle": "^1.3 || ^2.0",
     "jackalope/jackalope-doctrine-dbal": "^1.3",
     "doctrine/doctrine-cache-bundle": "^1.3",
     "doctrine/phpcr-odm": "^1.4",
