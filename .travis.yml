@@ -1,28 +1,52 @@
 language: php
 sudo: false
-cache:
-    directories:
-        - $HOME/.composer/cache/files
 
-matrix:
-    fast_finish: true
-    include:
-        - php: 7.1
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" DEPENDENCIES="symfony/lts:^3" STABILITY="dev"
-        - php: 7.1
-          env: DEPENDENCIES="symfony/lts:^4" STABILITY="dev"
-        - php: 7.2
-          env: DEPENDENCIES="symfony/lts:^4" STABILITY="dev"
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4snapshot
+
+env:
+  global:
+    - COMPOSER_MEMORY_LIMIT=-1
 
 before_install:
-    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
-    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+  - phpenv config-rm xdebug.ini
+  - composer global require --no-progress --no-scripts --no-plugins symfony/flex
 
 install:
-    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+  - travis_retry composer update -n --prefer-dist --prefer-stable
 
 script:
-    - composer validate --strict --no-check-lock
-    - composer update --dry-run
+  - composer validate --strict --no-check-lock
+  - composer update --dry-run
+
+jobs:
+  include:
+    # Tests the lowest set of dependencies
+    - php: 7.1
+      install:
+        - travis_retry composer update -n --prefer-lowest --prefer-stable --prefer-dist
+
+    # Test against latest Symfony 3.4 stable
+    - php: 7.4snapshot
+      env: SYMFONY_REQUIRE="3.4.*"
+      install:
+        - travis_retry composer update -n --prefer-dist --prefer-stable
+
+    # Test against latest Symfony 4.3 stable
+    - php: 7.4snapshot
+      env: SYMFONY_REQUIRE="4.3.*"
+      install:
+        - travis_retry composer update -n --prefer-dist --prefer-stable
+
+    # Test against latest Symfony 4.4 stable
+    - php: 7.4snapshot
+      env: SYMFONY_REQUIRE="4.4.*"
+      install:
+        - travis_retry composer update -n --prefer-dist
